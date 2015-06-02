@@ -1,4 +1,4 @@
 # Voice commands for putty
-
-Find process = "ps aux | grep ";
 get = "git";
+
+find process = "ps aux | grep ";

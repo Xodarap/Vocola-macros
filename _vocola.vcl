@@ -31,9 +31,12 @@ pretty print = "pp ";
 test that out = {Ctrl+s} {Alt+s} Wait(0) {Up} {Enter} {Alt+s};
 
 <website> := (GitHub = www.github.com
-		| Gmail = https://mail.google.com );
+		| Gmail = https://mail.google.com
+		| Facebook = www.Facebook.com
+		| hack pad = healthefilings.hackpad.com );
 
-Navigate to <website> = ShellExecute("chrome.exe $1");				
+Navigate to <website> = ShellExecute("chrome.exe $1");	
+			
 
 
 ### Switch applications, windows, and panels
