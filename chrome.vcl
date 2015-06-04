@@ -1,5 +1,7 @@
 # Voice commands for chrome
 
+Code block = {```} {Enter} {Enter} "```" {Enter} {Up_2};
+
 #Gmail macros
 compose = {c} ;
 compose in new window = {shift+c} ;

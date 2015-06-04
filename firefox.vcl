@@ -1,15 +1,26 @@
 # Voice commands for firefox
 git commit all = "git commit -am """"" {Left};
 get = "git";
-git create branch = "git checkout -b origin/";
-flag <_anything> = HeardWord(no, space, hyphen, hyphen, $1);
-longform <_anything> = "--$1";
+git create branch = "git checkout -b ";
 function paren = "(";
 find process = "ps aux | grep ";
 find in files = {Ctrl+F};
 
 Vim search = "/";
 vim next search = "n";
+
+#Mongo commands
+Mongo find one <_anything>= "db.$1" {Tab} ".findOne()" {Enter};
+
+#Console commands
+repeat command = {Up} {Enter};
+
+#Cloud nine
+test that out = {Ctrl+s} {Alt+s} Wait(0) {Up} {Enter} {Alt+s};
+switch to terminal ={Ctrl+s} {Alt+s};
+comment that = {Ctrl+/};
+handlebars curly brace = "{{{}}}" {Left_2};
+
 
 #vim commands
 <range> := 1..99;
@@ -80,10 +91,10 @@ create paragraph= normal ("o") normal ("o");
 ( create | insert) line above = {Esc} "O" ;
 ( copy | yank ) line= insertnormal ('yy');
 in-line search = {Esc} "f" ;
-duplicate line= excommand ("t.");
+duplicate line= {yyp};
 copy 2..9 lines= {Esc} "$1yy" ;
 show lines= {Esc} ":set number" {Enter} "i" ;
-line 1..99= {Esc} "$1gg"  "i" ;
+line 1..999 = {Esc} "$1gg"  "i" ;
 go to the beginning= {Esc} "gg" "i" ;
 end of [the] line = insertnormal ( "$" ) ;
 go to the last line = {Esc} "G" ;

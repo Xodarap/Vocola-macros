@@ -5,14 +5,19 @@ include "URLs.vch";
 Find text <_anything> = {Ctrl+f} Wait(0) $1  {Enter};
 start bullet list = "* ";
 start numbered list = "1. ";
+Copy and paste that = {Ctrl+c} Wait(0) {Ctrl+v};
+save that = {Ctrl+s};
 
-
-snake <_anything> = " " Replace($1," ","_");
+space snake <_anything> = " " Replace($1," ","_");
+snake <_anything> = Replace($1," ","_");
 Pascal <_anything> = Eval("''.join(x for x in $1.title() if not x.isspace())");
+space Pascal <_anything> = " " Eval("''.join(x for x in $1.title() if not x.isspace())");
 #uppercase <_anything> = Format.allcaps($1);
-dash word <_anything> = " " Replace($1," ","-");
+space dash word <_anything> = " " Replace($1," ","-");
+dash word <_anything> =  Replace($1," ","-");
 studded <_anything> =" " Replace($1," ",".");
 Camel <_anything> = Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
+space Camel <_anything> = " " Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
 
 Array bracket = "[";
 empty function = "()";
@@ -27,13 +32,14 @@ HTML cell end = "</td>";
 #Ruby
 ruby rocket = " => ";
 pretty print = "pp ";
-#Cloud nine
-test that out = {Ctrl+s} {Alt+s} Wait(0) {Up} {Enter} {Alt+s};
+ruby in-line block = " {||}" {Left_2};
 
 <website> := (GitHub = www.github.com
 		| Gmail = https://mail.google.com
 		| Facebook = www.Facebook.com
-		| hack pad = healthefilings.hackpad.com );
+		| hack pad = healthefilings.hackpad.com
+		| stack overflow = stackoverflow.com 
+		| LinkedIn = LinkedIn.com);
 
 Navigate to <website> = ShellExecute("chrome.exe $1");	
 			
@@ -150,6 +156,7 @@ Kill Here            = {Shift+End}{Del};
 Kill Back Here       = {Shift+Home}{Del};
 Duplicate Line       = {home}{Shift+Down}{Shift+Home}{Ctrl+c}{Home}{Ctrl+v};
 insert line after this = {end}{Enter};
+copy rest of line	= {Shift+End}{Ctrl+c};
               
 ### Paragraphs        
 Graph Start          = {Ctrl+Up}{Right}{Home};

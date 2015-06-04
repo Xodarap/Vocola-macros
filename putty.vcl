@@ -2,3 +2,4 @@
 get = "git";
 
 find process = "ps aux | grep ";
+complete and run = {Tab} {Enter};
