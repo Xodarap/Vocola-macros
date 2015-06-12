@@ -13,7 +13,11 @@ vim next search = "n";
 Mongo find one <_anything>= "db.$1" {Tab} ".findOne()" {Enter};
 
 #Console commands
-repeat command = {Up} {Enter};
+repeat command  = {Up} {Enter};
+repeat command 1..5 = {Up_$1} {Enter};
+CD up = "cd ../" {Enter};
+complete and run = {Tab} Wait(0) {Enter};
+change directory = "cd ";
 
 #Cloud nine
 test that out = {Ctrl+s} {Alt+s} Wait(0) {Up} {Enter} {Alt+s};
