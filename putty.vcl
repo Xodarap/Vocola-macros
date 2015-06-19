@@ -2,6 +2,7 @@
 get = "git";
 
 find process = "ps aux | grep ";
+find process <_anything> = "ps aux | grep $1 ";
 complete and run = {Tab} {Enter};
 nano save and exit = {Ctrl+o} Wait(1) {Enter} Wait(1) {Ctrl+x};
 fix duplicate = {Home} {Del} {End};

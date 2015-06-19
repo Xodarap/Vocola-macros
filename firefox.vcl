@@ -4,6 +4,7 @@ get = "git";
 git create branch = "git checkout -b ";
 function paren = "(";
 find process = "ps aux | grep ";
+find process <_anything> = "ps aux | grep $1 ";
 find in files = {Ctrl+F};
 
 Vim search = "/";
@@ -18,6 +19,7 @@ repeat command 1..5 = {Up_$1} {Enter};
 CD up = "cd ../" {Enter};
 complete and run = {Tab} Wait(0) {Enter};
 change directory = "cd ";
+nano save and exit = {Ctrl+o} Wait(1) {Enter} Wait(1) {Ctrl+x};
 
 #Cloud nine
 test that out = {Ctrl+s} {Alt+s} Wait(0) {Up} {Enter} {Alt+s};
