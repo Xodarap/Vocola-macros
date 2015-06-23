@@ -16,4 +16,4 @@ complete and run = {Tab} Wait(0) {Enter};
 change directory = "cd ";
 change directory <_anything> = "cd $1";
 
-Really end = "y" {Enter} "y" {Enter};
+Really end = "y" {Enter} Wait(1) "y" {Enter};
