@@ -16,16 +16,6 @@ Ruby block = "do ||" {Enter} "end" Wait(0) {Up} {End} {Left};
 nil test = ".nil?";
 String interpolate = "#{}" {Left};
 
-new method <_anything>	= "def " $1;
-snake <_anything> = Format.underscore($1) ;
-instance <_anything> = {@} $1 {Ctrl+Space};
-Scope <_anything> = Format.scoperesolve($1);
-Pascal <_anything> = Format.pascal($1);
-IntelliSense = {Ctrl+Space};
-uppercase <_anything> = Format.allcaps($1);
-dash word <_anything> =Format.dashword($1);
-studded <_anything> =Format.dotword($1);
-Camel <_anything> = Format.camel($1);
 
 Next tab ={Ctrl+PgDn};
 previous tab ={Ctrl+PgUp};

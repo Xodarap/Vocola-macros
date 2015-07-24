@@ -8,8 +8,8 @@ start numbered list = "1. ";
 Copy and paste that = {Ctrl+c} Wait(0) {Ctrl+v};
 save that = {Ctrl+s};
 
-space snake <_anything> = " " Replace($1," ","_");
-snake <_anything> = Replace($1," ","_");
+space snake <_anything> = " " Replace(Lower($1)," ","_");
+snake <_anything> = Replace(Lower($1)," ","_");
 Pascal <_anything> = Eval("''.join(x for x in $1.title() if not x.isspace())");
 space Pascal <_anything> = " " Eval("''.join(x for x in $1.title() if not x.isspace())");
 #uppercase <_anything> = Format.allcaps($1);
@@ -33,15 +33,23 @@ HTML cell end = "</td>";
 ruby rocket = " => ";
 pretty print = "pp ";
 ruby in-line block = " {||}" {Left_2};
+ruby in-line block <_anything>= " {|" Lower($1) "|}" {Left};
+Ruby block = " do ||" {Left};
+Ruby block <_anything> = " do |" Lower($1) "|" {Enter};
+
 
 <website> := (GitHub = www.github.com
 		| Gmail = https://mail.google.com
 		| Facebook = www.Facebook.com
 		| hack pad = healthefilings.hackpad.com
+		| hackpad Nathan =https://healthefilings.hackpad.com/Nathan-trackingPrivate-Hi17KNIwwlK
 		| stack overflow = stackoverflow.com 
-		| LinkedIn = LinkedIn.com);
-
+		| LinkedIn = LinkedIn.com
+		| crunch base = crunchbase.com
+		| healthefilings = healthefilings.com);
+<TLD> := (com| net| org);
 Navigate to <website> = ShellExecute("chrome.exe $1");	
+navigate to <_anything> dot <TLD>= ShellExecute("chrome.exe $1.$2");	
 			
 
 
@@ -156,7 +164,9 @@ Kill Here            = {Shift+End}{Del};
 Kill Back Here       = {Shift+Home}{Del};
 Duplicate Line       = {home}{Shift+Down}{Shift+Home}{Ctrl+c}{Home}{Ctrl+v};
 insert line after this = {end}{Enter};
+insert line before this = {home}{Enter};
 copy rest of line	= {Shift+End}{Ctrl+c};
+
               
 ### Paragraphs        
 Graph Start          = {Ctrl+Up}{Right}{Home};

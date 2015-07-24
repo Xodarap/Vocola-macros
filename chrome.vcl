@@ -1,6 +1,7 @@
 # Voice commands for chrome
 
 Code block = {```} {Enter} {Enter} "```" {Enter} {Up_2};
+empty toggle = {Space} {Backspace};
 
 #Gmail macros
 compose = {c} ;
@@ -33,3 +34,5 @@ open new window = {Ctrl+n};
 Previous tab = {Ctrl+Shift+Tab};
 next tab = {Ctrl+Tab};
 tab [1..9] = {Ctrl+$1};
+previous page = {Alt+Left};
+next page = {Alt+Right};
