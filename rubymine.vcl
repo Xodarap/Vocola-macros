@@ -16,8 +16,8 @@ go to definition ={Ctrl+b};
 debug again = {Shift+F9};
 run again = {Shift+F10};
 go to line 1..99 = {Ctrl+g} Wait(1) $1 {Enter};
-back = {Alt+Ctrl+Left};
-next = {Alt+Ctrl+Right};
+previous page = {Alt+Ctrl+Left};
+next page = {Alt+Ctrl+Right};
 
 
 
@@ -30,7 +30,7 @@ format that = {Ctrl+Alt+l};
 Find in files = {Ctrl+F};
 
 #HTML stuff
-HTML <_anything>= "<$1" {>};
+HTML <_anything>= "<" Lower($1) {>};
 attribute <_anything>= " " Lower($1) "=""";
 
 #debugging

@@ -36,3 +36,12 @@ next tab = {Ctrl+Tab};
 tab [1..9] = {Ctrl+$1};
 previous page = {Alt+Left};
 next page = {Alt+Right};
+
+#Debugging
+debug next = {F10};
+debug next 1..10 = {F10_$1};
+debug step = {F11};
+debug continue = {F8};
+
+
+repeat command = {Up} {Enter};

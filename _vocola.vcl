@@ -19,8 +19,8 @@ studded <_anything> =" " Replace($1," ",".");
 Camel <_anything> = Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
 space Camel <_anything> = " " Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
 
-Array bracket = "[";
-empty function = "()";
+#Array bracket = "[";
+#empty function = "()";
 
 # html
 
@@ -38,18 +38,24 @@ Ruby block = " do ||" {Left};
 Ruby block <_anything> = " do |" Lower($1) "|" {Enter};
 
 
-<website> := (GitHub = www.github.com
+<website> := (GitHub = https://github.com/Xodarap/Health-eFilings
+		| GitHub new issue =https://github.com/Xodarap/Health-eFilings/issues/new
 		| Gmail = https://mail.google.com
 		| Facebook = www.Facebook.com
 		| hack pad = healthefilings.hackpad.com
 		| hackpad Nathan =https://healthefilings.hackpad.com/Nathan-trackingPrivate-Hi17KNIwwlK
+		| hackpad Tony =https://healthefilings.hackpad.com/Tony-tracking-CXY5nuYSvwG
+		| hackpad Oscar = https://healthefilings.hackpad.com/Oscar-tracking-eOZla3pguIo
 		| stack overflow = stackoverflow.com 
 		| LinkedIn = LinkedIn.com
 		| crunch base = crunchbase.com
-		| healthefilings = healthefilings.com);
-<TLD> := (com| net| org);
+		| healthefilings = healthefilings.com
+		| Google drive =https://drive.google.com/drive/u/0/my-drive
+		| waffle = https://waffle.io/Xodarap/Health-eFilings);
+<TLD> := (com | net | org);
 Navigate to <website> = ShellExecute("chrome.exe $1");	
-navigate to <_anything> dot <TLD>= ShellExecute("chrome.exe $1.$2");	
+navigate to <_anything> .com= ShellExecute("chrome.exe $1.com");	
+navigate to <_anything> . <TLD>= ShellExecute("chrome.exe $1.$2");	
 			
 
 
@@ -164,9 +170,9 @@ Kill Here            = {Shift+End}{Del};
 Kill Back Here       = {Shift+Home}{Del};
 Duplicate Line       = {home}{Shift+Down}{Shift+Home}{Ctrl+c}{Home}{Ctrl+v};
 insert line after this = {end}{Enter};
-insert line before this = {home}{Enter};
+insert line before this = {home}{Enter} {Up};
 copy rest of line	= {Shift+End}{Ctrl+c};
-
+cut rest of line	= {Shift+End} {Ctrl+x};
               
 ### Paragraphs        
 Graph Start          = {Ctrl+Up}{Right}{Home};
@@ -175,6 +181,8 @@ Graph End            = {Ctrl+Down}{Left_2}{End};
 Open (Graph|Line)    = {Enter}{Enter}{Left};
 Copy Graph           = {Ctrl+Down}{Shift+Ctrl+Up}{Ctrl+c};
 Kill Graph           = {Ctrl+Down}{Shift+Ctrl+Up}{Del};
+insert graph after this = {end}{Enter}{Enter};
+insert graph before this = {home}{Enter}{Enter};
 Duplicate Graph      = {Ctrl+Down}{Shift+Ctrl+Up}{Ctrl+c}{Home}{Ctrl+v};
                     
 ### Entire "Flow"   
