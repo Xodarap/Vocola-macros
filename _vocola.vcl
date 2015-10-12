@@ -42,7 +42,7 @@ Ruby block <_anything> = " do |" Lower($1) "|" {Enter};
 		| GitHub new issue =https://github.com/Xodarap/Health-eFilings/issues/new
 		| Gmail = https://mail.google.com
 		| Facebook = www.Facebook.com
-		| hack pad = healthefilings.hackpad.com
+		| hackpad = healthefilings.hackpad.com
 		| hackpad Nathan =https://healthefilings.hackpad.com/Nathan-trackingPrivate-Hi17KNIwwlK
 		| hackpad Tony =https://healthefilings.hackpad.com/Tony-tracking-CXY5nuYSvwG
 		| hackpad Oscar = https://healthefilings.hackpad.com/Oscar-tracking-eOZla3pguIo
@@ -51,7 +51,8 @@ Ruby block <_anything> = " do |" Lower($1) "|" {Enter};
 		| crunch base = crunchbase.com
 		| healthefilings = healthefilings.com
 		| Google drive =https://drive.google.com/drive/u/0/my-drive
-		| waffle = https://waffle.io/Xodarap/Health-eFilings);
+		| waffle = https://waffle.io/Xodarap/Health-eFilings
+		| CHPL = http://oncchpl.force.com/ehrcert);
 <TLD> := (com | net | org);
 Navigate to <website> = ShellExecute("chrome.exe $1");	
 navigate to <_anything> .com= ShellExecute("chrome.exe $1.com");	
@@ -173,6 +174,7 @@ insert line after this = {end}{Enter};
 insert line before this = {home}{Enter} {Up};
 copy rest of line	= {Shift+End}{Ctrl+c};
 cut rest of line	= {Shift+End} {Ctrl+x};
+end line with <_anything>= {End} $1;
               
 ### Paragraphs        
 Graph Start          = {Ctrl+Up}{Right}{Home};

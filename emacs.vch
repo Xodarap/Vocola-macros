@@ -1,0 +1,78 @@
+<number> := 1..99;
+
+execute(statement) := {Alt+x} $statement {Enter};
+executeAndStayPut(statement):= execute("set-mark-command") execute(statement) execute("pop-global-mark");
+
+left = {Ctrl+b};
+right = {Ctrl+f};
+up = {Ctrl+p};
+down = {Ctrl+n};
+
+word = {Alt+f};
+back = {Alt+b};
+word <number> times = {Ctrl+u} $1 {Alt+f};
+back <number> times = {Ctrl+u} $1 {Alt+b};
+
+open file = {Ctrl+x}{Ctrl+f};
+save  = {Ctrl+x} {Ctrl+s};
+exit = {Ctrl+x} {Ctrl+c};
+window = {Ctrl+x}o;
+buffer = {Ctrl+x}b;
+previous buffer = {Ctrl+x}{Left};
+next buffer = {Ctrl+x}{Right};
+
+shut = {Ctrl+x}k;
+pull open <number> times = {Ctrl+u} $1 {Ctrl+x}"+";
+boom = {Enter};
+undo = {Ctrl+/};
+die = {Alt+Backspace};
+stab = {Alt+d};
+tick = {Ctrl+d};
+hack = {Backspace};
+capture = {Ctrl+w};
+copy = {Alt+w};
+mark = {Ctrl+Space};
+go to beginning= {Alt+<};
+Go to (bottom|end)= {Alt+>};
+
+cancel = {Ctrl+g};
+
+close buffer = execute("kill-this-buffer");
+list buffers = {Ctrl+x} {Ctrl+b};
+
+scroll down = {Ctrl+v};
+scroll up = {Ctrl+v};
+cut = {Ctrl+k};
+cut <number> times = {Ctrl+u} $1 {Ctrl+k};
+yank = {Ctrl+y};
+cycle = {Alt+y};
+
+climb = {Ctrl+r};
+fall = {Ctrl+s};
+
+# split windows
+emacs split horizontally = {Ctrl+x} 2;
+emacs split vertically = {Ctrl+x} 3;
+next pain = {Ctrl+x} o;
+Close pain = {Ctrl+x} 0;
+balance pains = {Ctrl+x} "+";
+
+# Packages
+list packages = execute("package-list-packages");
+Neo tree = execute("neotree-toggle");
+
+# Lines
+kill line = execute("kill-whole-line");
+line start = {Ctrl+a};
+line end = {Ctrl+e};
+
+#Git
+emacs git status = execute("magit-status");
+refresh = {Ctrl+x}g;
+finalize commit = {Ctrl+c} {Ctrl+c};
+
+Format that = execute("set-mark-command") execute("mark-whole-buffer") execute("indent-region") execute("pop-global-mark");
+Comment that=execute ("comment-region");
+uncomment that = execute("uncomment-region");
+Evaluate buffer = execute("eval-buffer");
+revert buffer = execute("revert-buffer");
