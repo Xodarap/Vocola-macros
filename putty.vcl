@@ -1,5 +1,5 @@
 # Voice commands for putty
-get = "git";
+git = "git";
 
 find process = "ps aux | grep ";
 find process <_anything> = "ps aux | grep $1 ";
