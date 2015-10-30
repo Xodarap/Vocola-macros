@@ -8,12 +8,20 @@ right = {Ctrl+f};
 up = {Ctrl+p};
 down = {Ctrl+n};
 
+
+# Words
 word = {Alt+f};
 back = {Alt+b};
-word <number> times = {Ctrl+u} $1 {Alt+f};
-back <number> times = {Ctrl+u} $1 {Alt+b};
+<number> words right = {Ctrl+u} $1 {Alt+f};
+<number> words left = {Ctrl+u} $1 {Alt+b};
+delete  word = {Alt+b} {Alt+d};
+delete previous <number> words = {Ctrl+u} $1 {Alt+b} {Ctrl+u} $1 {Alt+d};
+delete next <number> words = {Ctrl+u} $1 {Alt+d};
+delete previous word = {Alt+b} {Alt+d};
+delete next word = {Alt+d};
 
 open file = {Ctrl+x}{Ctrl+f};
+find file = {Ctrl+c} {p} {f};
 save  = {Ctrl+x} {Ctrl+s};
 exit = {Ctrl+x} {Ctrl+c};
 window = {Ctrl+x}o;
@@ -27,7 +35,6 @@ boom = {Enter};
 undo = {Ctrl+/};
 die = {Alt+Backspace};
 stab = {Alt+d};
-tick = {Ctrl+d};
 hack = {Backspace};
 capture = {Ctrl+w};
 copy = {Alt+w};
@@ -62,9 +69,10 @@ list packages = execute("package-list-packages");
 Neo tree = execute("neotree-toggle");
 
 # Lines
-kill line = execute("kill-whole-line");
+delete line = execute("kill-whole-line");
 line start = {Ctrl+a};
 line end = {Ctrl+e};
+kill here = {Ctrl+k};
 
 #Git
 emacs git status = execute("magit-status");
@@ -76,3 +84,9 @@ Comment that=execute ("comment-region");
 uncomment that = execute("uncomment-region");
 Evaluate buffer = execute("eval-buffer");
 revert buffer = execute("revert-buffer");
+
+#Locations
+Emacs config location = "/root/.emacs.d/personal/";
+
+# Utility commands
+toggle quotes = execute("toggle-quotes");

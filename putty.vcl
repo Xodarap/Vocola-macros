@@ -1,4 +1,4 @@
-# Voice commands for putty
+ # Voice commands for putty
 #include "vim.vch";
 include "emacs.vch";
 git = "git";
@@ -24,7 +24,9 @@ git create branch = "git checkout -b ";
 
 bundle install = "bundle install" {Enter};
 bundle exec rails console = "bundle exec rails console" {Enter};
+bundle exec rails server = "RAILS_ENV=development bundle exec rails server --bind 0.0.0.0" {Enter};
 bundle exec sidekiq = "bundle exec sidekiq" {Enter};
+bundle exec rake test = "bundle exec rake test" {Enter};
 
 bower install = "bower install --allow-root" {Enter};
 
@@ -63,3 +65,7 @@ tab 0..9 = {Ctrl+b} Wait(0) {$1};
 tmux pain <tmux_direction> = {Ctrl+b} Wait(0) {$1};
 tmux switch panes = {Ctrl+b} Wait(0) {o};
 
+
+# Things that exist in other applications but are different here
+paste that = {Shift+Ins};
+find text <_anything> = {Ctrl+r} Wait(0) $1;
