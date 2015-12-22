@@ -7,6 +7,7 @@ start bullet list = "* ";
 start numbered list = "1. ";
 Copy and paste that = {Ctrl+c} Wait(0) {Ctrl+v};
 save that = {Ctrl+s};
+space paste that = " " HeardWord(paste, that);
 
 space snake <_anything> = " " Replace(Lower($1)," ","_");
 snake <_anything> = Replace(Lower($1)," ","_");
