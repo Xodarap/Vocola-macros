@@ -33,6 +33,7 @@ bundle exec rake test = "bundle exec rake test" {Enter};
 bundle exec rake assets precompile = "RAILS_ENV=production bundle exec rake assets:precompile" {Enter};
 
 bower install = "bower install --allow-root" {Enter};
+tig = "tig" {Enter};
 
 switch tenant <_anything>= "Apartment::Tenant.switch! '" Lower($1) "'" {Enter};
 
