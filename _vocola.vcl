@@ -20,6 +20,8 @@ studded <_anything> =" " Replace($1," ",".");
 Camel <_anything> = Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
 space Camel <_anything> = " " Eval("$1[0].lower() + ''.join(x for x in $1.title() if not x.isspace())[1:]");
 
+simon says <_anything> = $1;
+
 #Array bracket = "[";
 #empty function = "()";
 

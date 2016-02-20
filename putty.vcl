@@ -4,6 +4,8 @@ include "emacs.vch";
 include "string.vch";
 git = "git";
 first= "first";
+json = "json";
+Jason = "json";
 
 find process = "ps aux | grep -i ";
 find process <_anything> = "ps aux | grep -i $1 "; 
@@ -30,10 +32,13 @@ bundle exec rails console = "bundle exec rails console" {Enter};
 bundle exec rails server = "RAILS_ENV=development bundle exec rails server --bind 0.0.0.0" {Enter};
 bundle exec sidekiq = "bundle exec sidekiq -c 1" {Enter};
 bundle exec rake test = "bundle exec rake test" {Enter};
-bundle exec rake assets precompile = "RAILS_ENV=production bundle exec rake assets:precompile" {Enter};
+bundle exec rake assets precompile = "bundle exec rake assets:precompile && git add public/assets/* && git commit --message 'assets precompile'" {Enter};
+bundle exec rake migrate = "bundle exec rake db:migrate" {Enter};
+bundle exec rake seed = "bundle exec rake db:seed" {Enter};
 
 bower install = "bower install --allow-root" {Enter};
 tig = "tig" {Enter};
+top = "top" {Enter};
 
 switch tenant <_anything>= "Apartment::Tenant.switch! '" Lower($1) "'" {Enter};
 
@@ -52,6 +57,7 @@ debug finish = "finish" {Enter};
 <shortcut_directory> := (health eFilings = /mnt/docs/RubymineProjects/Health-eFilings
 			| health data standards =/mnt/docs/RubymineProjects/hef-health-data-standards
 			| quality measures engine = /mnt/docs/RubymineProjects/hef-quality-measure-engine
+			| PPS = /mnt/docs/pps
 			| home = /root);
 change directory = "cd ";
 change directory <shortcut_directory> = "cd $1" {Enter};
@@ -59,10 +65,11 @@ change directory <_anything> = "cd $1" {Tab};
 
 
 Cypress password = "CypressPwd" {Enter};
-run login = "ubuntu" {Enter} Wait(1) "CypressPwd" {Enter} Wait(3) "sudo -i" {Enter} Wait(1) "CypressPwd" {Enter} Wait(5) "cd /mnt/docs/RubymineProjects/Health-eFilings" {Enter} Wait(3) "sudo ntpdate time.nist.gov" {Enter} Wait(3) "tmux new" {Enter};
+run login = "ubuntu" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "sudo -i" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "./mounts.sh; cd /mnt/docs/RubymineProjects/Health-eFilings; sudo ntpdate time.nist.gov; tmux new" {Enter};
 
 #Tmux
 tmux split horizontally = {Ctrl+b} Wait(0) {""""};
+tmux split vertically = {Ctrl+b} Wait(0) {%};
 tmux close pane = {Ctrl+b} Wait(0) {x} Wait(0) {y};
 tmux new window = {Ctrl+b} Wait(0) {c};
 next tab = {Ctrl+b} Wait(0) {n};

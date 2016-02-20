@@ -14,6 +14,7 @@ repeat command 1..5 = {Up_$1} {Enter};
 CD up = "cd ../" {Enter};
 complete and run = {Tab} Wait(0) {Enter};
 fix duplicate = {Home} {Del} {End};
+ipconfig = "Get-NetIPAddress | ? AddressFamily -eq IPv4 | ? InterfaceAlias -eq Ethernet | FT –AutoSize" {Enter};
 
 Really end = "y" {Enter} Wait(1) "y" {Enter};
 <YesNo> := (yes =y| no =n | diff =d);
