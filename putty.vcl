@@ -26,21 +26,31 @@ git status = "git status" {Enter};
 git stash = "git stash" {Enter};
 git checkout master = "git checkout master" {Enter};
 git create branch = "git checkout -b ";
+git squash = {Home} {Del_4} "s" {Left};
 
 bundle install = "bundle install" {Enter};
 bundle exec rails console = "bundle exec rails console" {Enter};
 bundle exec rails server = "RAILS_ENV=development bundle exec rails server --bind 0.0.0.0" {Enter};
 bundle exec sidekiq = "bundle exec sidekiq -c 1" {Enter};
 bundle exec rake test = "bundle exec rake test" {Enter};
-bundle exec rake assets precompile = "bundle exec rake assets:precompile && git add public/assets/* && git commit --message 'assets precompile'" {Enter};
-bundle exec rake migrate = "bundle exec rake db:migrate" {Enter};
-bundle exec rake seed = "bundle exec rake db:seed" {Enter};
+bundle exec [rake] assets precompile = "RAILS_ENV=production bundle exec rake assets:precompile && git add public/assets/* && git commit --message 'assets precompile'" {Enter};
+bundle exec [rake] [db] migrate = "bundle exec rake db:migrate" {Enter};
+bundle exec [rake] seed = "bundle exec rake db:seed" {Enter};
+
+<catalyze_environment> := (Harrisburg = catalyze-harrisburg| production);
+<catalyze_command> := (Postgres = console database-1 | rails);
+run_catalyze(environment, command) := "catalyze -E $environment console $command" {Enter};
+catalyze <catalyze_command> <catalyze_environment> = run_catalyze($1, $2);
+
+make Medicare patient = "catalyze -E production rake hef:make_medicare_patient[";
+catalyze console ="catalyze -E catalyze-harrisburg console code-1 ""bundle exec rails console""" {Enter};
+catalyze Postgres console = "catalyze -E catalyze-harrisburg console database-1" {Enter};
 
 bower install = "bower install --allow-root" {Enter};
 tig = "tig" {Enter};
 top = "top" {Enter};
 
-switch tenant <_anything>= "Apartment::Tenant.switch! '" Lower($1) "'" {Enter};
+switch tenant <_anything>= "Apartment::Tenant.switch! '" Lower($1) "1'" {Enter};
 
 Really end = "y" {Enter} Wait(1) "y" {Enter};
 <YesNo> := (yes =y| no =n | diff =d);
@@ -61,11 +71,12 @@ debug finish = "finish" {Enter};
 			| home = /root);
 change directory = "cd ";
 change directory <shortcut_directory> = "cd $1" {Enter};
-change directory <_anything> = "cd $1" {Tab};
+change directory <_anything> = "cd $1" {Tab} {Enter};
 
 
 Cypress password = "CypressPwd" {Enter};
 run login = "ubuntu" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "sudo -i" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "./mounts.sh; cd /mnt/docs/RubymineProjects/Health-eFilings; sudo ntpdate time.nist.gov; tmux new" {Enter};
+switch IP 1..20 = "cd /root && /root/mounts.sh $1" {Enter};
 
 #Tmux
 tmux split horizontally = {Ctrl+b} Wait(0) {""""};

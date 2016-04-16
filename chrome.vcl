@@ -45,3 +45,4 @@ debug continue = {F8};
 
 
 repeat command = {Up} {Enter};
+Simon says my email = "bwest@healthefilings.com";
