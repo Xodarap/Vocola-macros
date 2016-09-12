@@ -22,7 +22,7 @@ first = "first";
 
 
 
-new method <_anything>	= "def " Replace(Lower($1)," ","_");
+new method <_anything>	= "def " $1;
 instance <_anything> = {@} $1 {Ctrl+Space};
 IntelliSense = {Ctrl+Space};
 comment that = {Ctrl+/};

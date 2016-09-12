@@ -1,6 +1,6 @@
  # Voice commands for putty
 #include "vim.vch";
-include "emacs.vch";
+#include "emacs.vch";
 include "string.vch";
 git = "git";
 first= "first";
@@ -38,13 +38,13 @@ bundle exec [rake] [db] migrate = "bundle exec rake db:migrate" {Enter};
 bundle exec [rake] seed = "bundle exec rake db:seed" {Enter};
 
 <catalyze_environment> := (Harrisburg = catalyze-harrisburg| production);
-<catalyze_command> := (Postgres = console database-1 | rails);
+<catalyze_command> := (Postgres = console database-2 | rails);
 run_catalyze(environment, command) := "catalyze -E $environment console $command" {Enter};
 catalyze <catalyze_command> <catalyze_environment> = run_catalyze($1, $2);
 
 make Medicare patient = "catalyze -E production rake hef:make_medicare_patient[";
 catalyze console ="catalyze -E catalyze-harrisburg console code-1 ""bundle exec rails console""" {Enter};
-catalyze Postgres console = "catalyze -E catalyze-harrisburg console database-1" {Enter};
+catalyze Postgres console = "catalyze -E catalyze-harrisburg console database-2" {Enter};
 
 bower install = "bower install --allow-root" {Enter};
 tig = "tig" {Enter};
@@ -67,16 +67,18 @@ debug finish = "finish" {Enter};
 <shortcut_directory> := (health eFilings = /mnt/docs/RubymineProjects/Health-eFilings
 			| health data standards =/mnt/docs/RubymineProjects/hef-health-data-standards
 			| quality measures engine = /mnt/docs/RubymineProjects/hef-quality-measure-engine
+			| EHRI = /mnt/docs/RubymineProjects/ehri
 			| PPS = /mnt/docs/pps
-			| home = /root);
+			| home = /root
+			| E drive = /mnt/e_drive);
 change directory = "cd ";
 change directory <shortcut_directory> = "cd $1" {Enter};
 change directory <_anything> = "cd $1" {Tab} {Enter};
 
 
 Cypress password = "CypressPwd" {Enter};
-run login = "ubuntu" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "sudo -i" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "./mounts.sh; cd /mnt/docs/RubymineProjects/Health-eFilings; sudo ntpdate time.nist.gov; tmux new" {Enter};
-switch IP 1..20 = "cd /root && /root/mounts.sh $1" {Enter};
+run login = "ubuntu" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "sudo -i" {Enter} Wait(100) "CypressPwd" {Enter} Wait(300) "cd /mnt/docs/RubymineProjects/Health-eFilings; sudo ntpdate time.nist.gov; tmux new" {Enter};
+switch IP 1..30 = ". /root/mounts.sh $1" {Enter};
 
 #Tmux
 tmux split horizontally = {Ctrl+b} Wait(0) {""""};
