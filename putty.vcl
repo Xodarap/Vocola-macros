@@ -36,6 +36,7 @@ bundle exec rake test = "bundle exec rake test" {Enter};
 bundle exec [rake] assets precompile = "RAILS_ENV=production bundle exec rake assets:precompile && git add public/assets/* && git commit --message 'assets precompile'" {Enter};
 bundle exec [rake] [db] migrate = "bundle exec rake db:migrate" {Enter};
 bundle exec [rake] seed = "bundle exec rake db:seed" {Enter};
+bundle exec rubocop = "bundle exec rubocop" {Enter};
 
 <catalyze_environment> := (Harrisburg = catalyze-harrisburg| production);
 <catalyze_command> := (Postgres = console database-2 | rails);
@@ -70,7 +71,8 @@ debug finish = "finish" {Enter};
 			| EHRI = /mnt/docs/RubymineProjects/ehri
 			| PPS = /mnt/docs/pps
 			| home = /root
-			| E drive = /mnt/e_drive);
+			| E drive = /mnt/e_drive
+			| Lebesgue = /mnt/docs/RubymineProjects/Lebesgue);
 change directory = "cd ";
 change directory <shortcut_directory> = "cd $1" {Enter};
 change directory <_anything> = "cd $1" {Tab} {Enter};

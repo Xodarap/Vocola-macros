@@ -2,7 +2,7 @@
 include "string.vch";
 include "URLs.vch";
 
-Find text <_anything> = {Ctrl+f} Wait(0) $1  {Enter};
+#Find text <_anything> = {Ctrl+f} Wait(0) $1  {Enter};
 start bullet list = "* ";
 start numbered list = "1. ";
 Copy and paste that = {Ctrl+c} Wait(0) {Ctrl+v};
@@ -46,6 +46,7 @@ Ruby block <_anything> = " do |" Lower($1) "|" {Enter};
 		| Gmail = https://mail.google.com
 		| Facebook = www.Facebook.com
 		| hackpad = healthefilings.hackpad.com
+		| hackpad Ben [weekly] = https://healthefilings.hackpad.com/Bens-weekly-progress-MeaK6FizD45
 		| hackpad Nathan =https://healthefilings.hackpad.com/Nathan-trackingPrivate-Hi17KNIwwlK
 		| hackpad Oscar = https://healthefilings.hackpad.com/Oscar-tracking-eOZla3pguIo
 		| hackpad Oscar weekly = https://healthefilings.hackpad.com/Oscars-weekly-progress-mBuHDOd4tsw
@@ -211,7 +212,7 @@ Replace All          = {Ctrl+a}{Del}{Ctrl+v};
 ### Selection         
 Kill That            = {Del};
 Cut That             = {Ctrl+x};
-Copy That            = {Ctrl+c};
+#Copy That            = {Ctrl+c};
 Yank That            = {Ctrl+v};
 Paste Here           = ButtonClick() {Ctrl+v};
 Duplicate That       = {Ctrl+c}{Left}{Ctrl+v};
